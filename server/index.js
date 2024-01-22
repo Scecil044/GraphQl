@@ -4,11 +4,13 @@ const schema = require("./schema/schema");
 const { graphqlHTTP } = require("express-graphql");
 const colors = require("colors");
 const connectDb = require("./config/db");
+const cors = require("cors");
 
 const app = express();
 connectDb();
 const port = process.env.PORT || 4000;
 
+app.use(cors());
 app.use(
   "/graphql",
   graphqlHTTP({
